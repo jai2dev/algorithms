@@ -48,7 +48,7 @@ class WeightedRoundRobin:
 	def aquireNode(self,request):
 		try:
 			with self.global_lock:
-				node=self.nodes[self.curNode]%self.length
+				node=self.nodes[self.curNode%self.length]
 				while node.weight==0:
 					self.curNode+=1
 					node=self.nodes[self.curNode]
